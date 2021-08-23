@@ -1,0 +1,27 @@
+.form-group {
+    margin-top: 10px;
+}
+
+.create-btn {
+    margin-top: 10px;
+}
+
+label {
+    padding-bottom: 10px;
+}
+
+.label-text {
+    font-weight: 800;
+}
+
+.form-control.ng-touched.ng-invalid {
+    border: 2px solid red;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0 white;
+}
+
+.check-rad-input {
+    margin-right: 4px;
+}

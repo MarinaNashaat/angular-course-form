@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'start-again';
+  post={
+   isFav:true
+}
+onFavChanged(isFav:boolean){
+if(isFav){
+  alert("Add to Favorite");
+}
+else{
+  alert("Remove Favorite");
+
+}
+}
 }

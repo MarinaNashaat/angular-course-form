@@ -1,0 +1,46 @@
+<form #f="ngForm" (ngSubmit)="submit(f)">
+    <div class="form-group">
+        <label for="courseName" class="label-text">Course Name:</label>
+        <input ngModel name="courseName" #courseName="ngModel" type="text" id="courseName" class="form-control" required minlength="3" placeholder="Course Name">
+        <div class="alert alert-danger" *ngIf="courseName.touched && !courseName.valid">
+            <div *ngIf="courseName.errors?.required">Course Name is required!</div>
+            <div *ngIf="courseName.errors?.minlength">Course Name should be at least {{courseName.errors?.minlength.requiredLength}} characters </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="coursePrice" class="label-text">Price:</label>
+        <input ngModel name="coursePrice" #coursePrice="ngModel" type="number" id="coursePrice" class="form-control" required minlength="3" placeholder="0">
+        <div class="alert alert-danger" *ngIf="coursePrice.touched && !coursePrice.valid">
+            <div *ngIf="coursePrice.errors?.required">Course Price is required!</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="courseCategory" class="label-text">Course Category:</label>
+        <select ngModel name="courseCategory" #courseCategory="ngModel" id="courseCategory" class="form-select" required>
+          <option *ngFor="let category of courseCategories" [value]="category.id">{{category.name}}</option>
+        </select>
+        <div class="alert alert-danger" *ngIf="courseCategory.touched && !courseCategory.valid">
+            <div *ngIf="courseCategory.errors?.required">Course Category is required!</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="courseRadio" class="label-text"> Course Level: </label>
+        <div class="radio" *ngFor="let level of courseLevels">
+
+            <input ngModel name="courseRadio" type="radio" class="check-rad-input" id="courseRadio" [value]="level.id">{{level.name}}
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="description" class="label-text">Description</label>
+        <textarea id="description" cols="30" rows="10" class="form-control" placeholder="Course Description"></textarea>
+    </div>
+    <div class="checkbox form-group">
+        <label>
+        <input ngModel name="courseCheck"  type="checkbox" class="check-rad-input">30-day money-back guarantee
+      </label>
+    </div>
+    <button class="btn btn-primary create-btn" [disabled]="!f.valid">Create</button>
+</form>
